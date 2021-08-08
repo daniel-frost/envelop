@@ -47,7 +47,7 @@ jobs:
           name: node_modules
 
       - name: Lint
-        run: yarn lint
+        run: npm install next && yarn lint
 
   # prettier:
     # runs-on: ubuntu-latest
