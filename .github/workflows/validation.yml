@@ -55,9 +55,14 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: node_modules
+      
+      - name: Download build
+        uses: actions/download-artifact@v2
+        with:
+          name: build
 
       - name: Lint
-        run: npm install next && yarn lint
+        run: yarn lint
 
   # prettier:
     # runs-on: ubuntu-latest
