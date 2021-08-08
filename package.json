@@ -2,27 +2,47 @@
     "name": "envelop",
     "version": "0.1.0",
     "private": true,
+    "main": "dist/server/index.js",
+    "engines": {
+        "node": "12"
+    },
     "scripts": {
-        "dev": "next dev",
-        "build": "next build",
+        "dev": "yarn dev:client && yarn dev:server",
+        "dev:client": "next src/client",
+        "dev:server": "babel src/server --out-dir dist/server --source-maps --watch",
+        "build": "yarn build:client && yarn build:server",
+        "build:client": "next build src/client",
+        "build:server": "babel src/server --out-dir dist/server --source-maps",
         "start": "next start",
         "export": "next export",
         "lint": "next lint",
         "typescript-build": "tsc",
         "prettier:check": "prettier --config ./.prettierrc --check \"**/*.{ts,tsx,yml,yaml,js,sh,json,jsx,css}\"",
-        "prettier:fix": "prettier --config ./.prettierrc --write \"**/*.{ts,tsx,yml,yaml,js,sh,json,jsx,css}\""
+        "prettier:fix": "prettier --config ./.prettierrc --write \"**/*.{ts,tsx,yml,yaml,js,sh,json,jsx,css}\"",
+        "preserve": "npm run build",
+        "serve": "cross-env NODE_ENV=production firebase serve",
+        "predeploy": "rimraf dist/ && yarn build",
+        "deploy": "cross-env NODE_ENV=production firebase deploy --only hosting,functions"
     },
     "dependencies": {
         "@types/node": "^16.4.13",
+        "firebase-admin": "^9.11.0",
+        "firebase-functions": "^3.14.1",
+        "isomorphic-unfetch": "^3.1.0",
         "next": "11.0.1",
         "react": "17.0.1",
         "react-dom": "17.0.1"
     },
     "devDependencies": {
+        "@babel/cli": "^7.14.8",
+        "@babel/core": "^7.15.0",
+        "@babel/preset-env": "^7.15.0",
         "@types/react": "17.0.16",
+        "cross-env": "^7.0.3",
         "eslint": "7.32.0",
         "eslint-config-next": "11.0.1",
         "prettier": "^2.3.2",
+        "rimraf": "^3.0.2",
         "typescript": "4.3.5"
     }
 }
