@@ -6,15 +6,17 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
+        "export": "next export",
         "lint": "next lint",
         "typescript-build": "tsc",
         "prettier:check": "prettier --config ./.prettierrc --check \"**/*.{ts,tsx,yml,yaml,js,sh,json,jsx,css}\"",
         "prettier:fix": "prettier --config ./.prettierrc --write \"**/*.{ts,tsx,yml,yaml,js,sh,json,jsx,css}\""
     },
     "dependencies": {
+        "@types/node": "^16.4.13",
         "next": "11.0.1",
-        "react": "17.0.2",
-        "react-dom": "17.0.2"
+        "react": "17.0.1",
+        "react-dom": "17.0.1"
     },
     "devDependencies": {
         "@types/react": "17.0.16",
