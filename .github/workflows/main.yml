@@ -19,8 +19,6 @@ jobs:
           yarn
       - name: Next build
         run: yarn build
-      - name: Typescript
-        run: yarn typescript-build
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
