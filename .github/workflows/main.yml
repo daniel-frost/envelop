@@ -1,11 +1,8 @@
 name: CI
 
 on:
-  push:
   pull_request:
     branches: [ main ]
-
-  workflow_dispatch:
 
 jobs:
   build:
@@ -17,13 +14,13 @@ jobs:
         run: |
           npm install yarn jest
           yarn
-      - name: Next build
-        run: yarn build
+      - name: Zip Node_Modules
+        run: tar -czf node_modules.tar.gz ./node_modules
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
           name: build
-          path: .next
+          path: ./node_modules.tar.gz
 
   # test:
   #   runs-on: ubuntu-latest
