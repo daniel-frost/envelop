@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: |
+          npm install yarn jest
+          yarn
+      - name: Next build
+        run: yarn build
+      - name: Typescript
+        run: yarn typescript-build
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: .next
+
+  # test:
+  #   runs-on: ubuntu-latest
+  #   needs: build
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Run tests
+  #       run: |
+  #         yarn
+  #         yarn test
+  # lint:
+  #   runs-on: ubuntu-latest
+  #   needs: build
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Lint
+  #       run: |
+  #         yarn
+  #         yarn lint
+  # prettier:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v2
+      - name: Prettier
+        run: |
+          yarn
+          yarn prettier
