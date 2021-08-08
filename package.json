@@ -4,7 +4,7 @@
     "private": true,
     "main": "dist/server/index.js",
     "engines": {
-        "node": "12"
+        "node": "14"
     },
     "scripts": {
         "dev": "yarn dev:client && yarn dev:server",
