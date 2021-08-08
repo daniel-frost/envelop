@@ -59,6 +59,9 @@ jobs:
         with:
           name: node_modules
 
+      - name: Unzip Node Modules
+        run: tar -xzf node_modules.tar.gz
+
       - name: Lint
         run: yarn lint
 
