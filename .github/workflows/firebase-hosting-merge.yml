@@ -15,7 +15,7 @@ jobs:
 
       - name: Build
         run: >-
-          sudo npm install -g next react react-dom yarn && yarn
+          sudo npm install -g next react react-dom yarn && yarn && yarn build
 
       - name: Deploy
         uses: w9jds/firebase-action@master
