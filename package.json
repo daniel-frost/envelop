@@ -2,7 +2,7 @@
     "name": "envelop",
     "version": "0.1.0",
     "private": true,
-    "main": "dist/server/index.js",
+    "main": "dist/server",
     "engines": {
         "node": "14"
     },
