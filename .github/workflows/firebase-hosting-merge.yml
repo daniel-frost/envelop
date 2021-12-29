@@ -13,9 +13,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Build
+      - name: Install Dependencies
         run: >-
           sudo npm install -g next react react-dom yarn && yarn && yarn build
+
+      - name: Build
+        run: yarn build
 
       - name: Deploy
         uses: w9jds/firebase-action@master
